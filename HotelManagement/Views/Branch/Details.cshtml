@@ -1,0 +1,46 @@
+﻿@model BranchDetailsViewModel
+
+@{
+    ViewBag.Title = "Branch Details";
+    var photoPath = "~/images/" + (Model.Branch.PhotoPath ?? "noimage.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-11">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Branch.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" style="max-height:300px" src="@photoPath" asp-append-version="true" />
+            </div>
+
+            <div class="card-deck m-1 justify-content-xl-center">
+                @foreach (var room in Model.Room)
+                {
+                    if (room.RoomStatus == 0)
+                    {
+                        <a asp-controller="room" asp-action="order" asp-route-id="@room.Id"
+                                class="btn btn-info mr-2 mb-3">
+                            @room.FloorNumber
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="room" asp-action="order" asp-route-id="@room.Id"
+                                class="btn btn-danger mr-2 mb-3">
+                            @room.FloorNumber
+                        </a>
+                    }
+                }
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                <a asp-action="edit" asp-controller="room"
+                   class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>

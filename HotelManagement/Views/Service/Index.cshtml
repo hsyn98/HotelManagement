@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Services>
+
+@{
+    ViewData["Title"] = "Hotel Services";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<a class="navbar-brand h5 mb-3" asp-area="" asp-controller="service" asp-action="create">+ Create New</a>
+
+<div class="card-deck">
+    @foreach (var service in Model)
+    {
+        var photoPath = "~/images/" + (service.PhotoPath ?? "noimageservice.jpg");
+        <div class="card m-3" style="min-width: 18rem; max-width:30%;">
+            <div class="card-header">
+                <h3>@service.Name - @service.ServiceGroup</h3>
+            </div>
+            <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+            <div class="card-footer text-center">
+                <a asp-controller="service" asp-action="edit" asp-route-id="@service.Id"
+                   class="btn btn-primary m-1">Edit</a>
+            </div>
+        </div>
+    }
+</div>

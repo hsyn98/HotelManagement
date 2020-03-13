@@ -1,0 +1,52 @@
+﻿@model RoomCreateViewModel
+
+@{
+    ViewBag.Title = "Create Room";
+}
+<form enctype="multipart/form-data" asp-controller="room" asp-action="create" method="post" class="mt-3">
+    <input hidden asp-for="BranchId" />
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control" placeholder="Name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Number of Floors</label>
+        <div class="col-sm-10">
+            <input asp-for="Floor" class="form-control" placeholder="Number of Floors">
+            <span asp-validation-for="Floor" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Star" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Star" class="form-control" placeholder="Star value of Rooms">
+            <span asp-validation-for="Star" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="RoomStatus" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="RoomStatus" class="custom-select mr-sm-2"
+                    asp-items="Html.GetEnumSelectList<RoomStatus>()">
+                <option value="">Please Select</option>
+            </select>
+            <span asp-validation-for="RoomStatus" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row mt-4">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-controller="home" asp-action="index"
+               class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script>
+
+        </script>
+    }
+</form>

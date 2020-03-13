@@ -1,0 +1,89 @@
+﻿@model ServiceEditViewModel
+
+@{
+    ViewBag.Title = "Edit Service";
+    var photoPath = "~/images/" + (Model.ExistingPhotoPath ?? "noimageservice.jpg");
+}
+
+<form enctype="multipart/form-data" asp-controller="service" asp-action="edit" method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="ServiceGroup" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="ServiceGroup" class="custom-select mr-sm-2"
+                    asp-items="Html.GetEnumSelectList<ServicesGroups>()">
+                <option value="">Please Select</option>
+            </select>
+            <span asp-validation-for="ServiceGroup" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control" placeholder="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="ServiceStatus" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="ServiceStatus" class="custom-select mr-sm-2">
+                <option value="">Please Select</option>
+                <option value="True">Active</option>
+                <option value="False">DeActive</option>
+            </select>
+            <span asp-validation-for="ServiceStatus" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input asp-for="Photo" class="form-control custom-file-input">
+                <label class="custom-file-label">Choose File...</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="service" asp-action="index"
+                class="btn btn-primary">Cancel</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                Delete
+            </button>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }
+</form>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this Hotel?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a asp-controller="service" asp-action="delete" asp-route-id="@Model.Id"
+                    class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
