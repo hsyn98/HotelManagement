@@ -42,3 +42,5 @@ C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\User\Edit.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Book.cshtml.g.cs
+C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Edit.cshtml.g.cs
+C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Order.cshtml.g.cs

@@ -52,7 +52,7 @@ namespace HotelManagement.Controllers
                 _roomRepository.Add(newRoom);
             }
 
-            return RedirectToAction("details", "branch", model.BranchId);
+            return RedirectToAction("details", "branch", new { id = model.BranchId });
         }
 
         [HttpGet]

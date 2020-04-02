@@ -23,8 +23,13 @@ using HotelManagement.Models;
 
 #line default
 #line hidden
+#line 3 "C:\Users\husey\source\repos\HotelManagement\HotelManagement\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f8976ee806691153d5a29335ac66e0618bea694c", @"/Views/Room/Edit.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e6b562b34b02e14294f723cf2cbedcee1bbd9a33", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ce50ed97757ef9699611317b6a42909ac7eb4090", @"/Views/_ViewImports.cshtml")]
     public class Views_Room_Edit : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

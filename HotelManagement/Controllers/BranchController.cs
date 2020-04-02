@@ -111,7 +111,6 @@ namespace HotelManagement.Controllers
 
         public IActionResult Details(int id)
         {
-            int idd = id;
             Branch branch = _branchRepository.GetBranch(id);
             var roomModel = _roomRepository.GetAllRooms(id);
 
