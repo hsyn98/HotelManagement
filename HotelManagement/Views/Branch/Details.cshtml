@@ -21,25 +21,29 @@
                 {
                     if (room.RoomStatus == 0)
                     {
-                        <a asp-controller="room" asp-action="order" asp-route-id="@room.Id"
+                        <a asp-controller="room" asp-action="book" asp-route-id="@room.Id"
                                 class="btn btn-info mr-2 mb-3">
-                            @room.FloorNumber
+                            @room.RoomNumber
                         </a>
                     }
                     else
                     {
-                        <a asp-controller="room" asp-action="order" asp-route-id="@room.Id"
+                        <a asp-controller="room" asp-action="book" asp-route-id="@room.Id"
                                 class="btn btn-danger mr-2 mb-3">
-                            @room.FloorNumber
+                            @room.RoomNumber
                         </a>
                     }
                 }
             </div>
 
             <div class="card-footer text-center">
-                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
-                <a asp-action="edit" asp-controller="room"
-                   class="btn btn-primary">Edit</a>
+                <a asp-controller="home" asp-action="index" 
+                   class="btn btn-primary">Back</a>
+                @if (Model.Room.Count() == 0)
+                {
+                    <a asp-controller="room" asp-action="create" asp-route-id="@Model.Branch.Id"
+                       class="btn btn-primary m-1" style="width:auto">Add Rooms</a>
+                }
             </div>
         </div>
     </div>

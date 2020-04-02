@@ -109,10 +109,11 @@ namespace HotelManagement.Controllers
             return RedirectToAction("index", "home");
         }
 
-        public ViewResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            Branch branch = _branchRepository.GetBranch(id.Value);
-            var roomModel = _roomRepository.GetAllRooms(id.Value);
+            int idd = id;
+            Branch branch = _branchRepository.GetBranch(id);
+            var roomModel = _roomRepository.GetAllRooms(id);
 
             BranchDetailsViewModel branchDetailsViewModel = new BranchDetailsViewModel()
             {

@@ -44,35 +44,25 @@ namespace HotelManagement.Controllers
                 {
                     BranchId = model.BranchId,
                     Floor = i / 10,
-                    FloorNumber = i,
+                    RoomNumber = i,
                     RoomStatus = RoomStatus.Free,
                     Star = model.Star
                 };
 
                 _roomRepository.Add(newRoom);
             }
-            return RedirectToAction("index", "home");
+
+            return RedirectToAction("details", "branch", model.BranchId);
         }
 
         [HttpGet]
-        public IActionResult Order(int id)
+        public IActionResult Book(int id)
         {
-            Room room = _roomRepository.GetRoom(id);
-            RoomOrderViewModel roomOrderViewModel = new RoomOrderViewModel
-            {
-                Id = room.Id,
-                BranchId = room.BranchId,
-                Floor = room.Floor,
-                FloorNumber = room.FloorNumber,
-                RoomStatus = room.RoomStatus,
-                Star = room.Star
-            };
-
-            return View(roomOrderViewModel);
+            return RedirectToAction("details", "branch");
         }
 
         [HttpPost]
-        public IActionResult Order(RoomOrderViewModel roomorder)
+        public IActionResult Book(RoomBookViewModel roomorder)
         {
             return RedirectToAction("details", "branch");
         }

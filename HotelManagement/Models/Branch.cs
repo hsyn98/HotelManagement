@@ -9,16 +9,22 @@ namespace HotelManagement.Models
     public class Branch
     {
         public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
         public Cities City { get; set; }
+
         [Required]
         public string Address { get; set; }
+
         [Required]
         public string PhoneNumber { get; set; }
+
         [Required]
         public BranchStatus BranchStatus { get; set; }
+
         public string PhotoPath { get; set; }
     }
 }

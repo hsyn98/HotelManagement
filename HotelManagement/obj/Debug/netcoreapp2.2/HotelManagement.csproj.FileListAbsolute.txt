@@ -22,7 +22,6 @@ C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Create.cshtml.g.cs
-C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Edit.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -36,7 +35,10 @@ C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\HotelManagement.pdb
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\HotelManagement.csproj.CopyComplete
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Branch\Details.cshtml.g.cs
-C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Order.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Service\Create.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Service\Edit.cshtml.g.cs
 C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Service\Index.cshtml.g.cs
+C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\User\Create.cshtml.g.cs
+C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\User\Edit.cshtml.g.cs
+C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\husey\source\repos\HotelManagement\HotelManagement\obj\Debug\netcoreapp2.2\Razor\Views\Room\Book.cshtml.g.cs
