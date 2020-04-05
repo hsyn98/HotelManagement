@@ -56,7 +56,7 @@ namespace HotelManagement.Controllers
 
         public IActionResult Activate (UserEditViewModel model)
         {
-            User user = _userRepository.GetUser(model.Id);
+            User user = _userRepository.GetUser(model.UserId);
             user.Status = UserStatus.Active;
 
             _userRepository.Update(user);
@@ -65,7 +65,7 @@ namespace HotelManagement.Controllers
 
         public IActionResult Deactivate(UserEditViewModel model)
         {
-            User user = _userRepository.GetUser(model.Id);
+            User user = _userRepository.GetUser(model.UserId);
             user.Status = UserStatus.DeActive;
 
             _userRepository.Update(user);

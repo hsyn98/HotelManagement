@@ -14,12 +14,18 @@ namespace HotelManagement.Controllers
     {
         private readonly IBranchRepository _branchRepository;
         private readonly IRoomRepository _roomRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IBookRepository _bookRepository;
 
         public RoomController(IBranchRepository branchRepository,
-                              IRoomRepository roomRepository)
+                              IRoomRepository roomRepository,
+                              IUserRepository userRepository,
+                              IBookRepository bookRepository)
         {
             _branchRepository = branchRepository;
             _roomRepository = roomRepository;
+            _userRepository = userRepository;
+            _bookRepository = bookRepository;
         }
 
         [HttpGet]
@@ -56,15 +62,80 @@ namespace HotelManagement.Controllers
         }
 
         [HttpGet]
-        public IActionResult Book(int id)
-        {
-            return RedirectToAction("details", "branch");
+        public IActionResult Book(int id, string search = null)
+        {   
+            var foundUsers = _userRepository.Search(null);
+            if (!string.IsNullOrEmpty(search))
+            {
+                foundUsers = _userRepository.Search(search);
+            }
+
+            Room room = _roomRepository.GetRoom(id);
+            Branch branch = _branchRepository.GetBranch(room.BranchId);
+
+            RoomBookViewModel roomBookViewModel = new RoomBookViewModel()
+            {
+                SelectedBranchId = branch.Id,
+                SelectedRoomId = room.Id,
+                RoomStar = room.Star,
+                ExistUsers = foundUsers
+            };
+
+            return View(roomBookViewModel);
         }
 
         [HttpPost]
-        public IActionResult Book(RoomBookViewModel roomorder)
+        public IActionResult Book(RoomBookViewModel roomOrder)
         {
-            return RedirectToAction("details", "branch");
+            //if (ModelState.IsValid)
+            //{
+
+            //}
+            //else
+            //{
+            //    return RedirectToAction("book", "room", new { });
+            //}
+
+            User newUser = new User
+            {
+                Name = roomOrder.Name,
+                Surname = roomOrder.Surname,
+                Email = roomOrder.Email,
+                CreatedDate = DateTime.Now,
+                Gender = roomOrder.Gender,
+                Status = roomOrder.Status
+            };
+
+            _userRepository.Add(newUser);
+            int lastUserId = _userRepository.AddedUserId();
+
+            Book newBook = new Book
+            {
+                BranchId = roomOrder.SelectedBranchId,
+                RoomId = roomOrder.SelectedRoomId,
+                UserId = lastUserId,
+                StartDate = roomOrder.StartDate,
+                FinishDate = roomOrder.FinishDate,
+                NumberoOfDays = roomOrder.FinishDate.Day - roomOrder.StartDate.Day,
+                Price = roomOrder.RoomStar * 10 * (roomOrder.StartDate.Day - roomOrder.FinishDate.Day)
+            };
+
+            _bookRepository.Add(newBook);
+
+            Room roomState = _roomRepository.GetRoom(roomOrder.SelectedRoomId);
+            roomState.RoomStatus = RoomStatus.Captured;
+
+            _roomRepository.Update(roomState);
+
+            return RedirectToAction("details", "branch", new { id = roomOrder.SelectedBranchId });
+
         }
+
+        //public IActionResult AddBook (RoomBookViewModel roomOrder, int userId)
+        //{
+            
+
+        //    return RedirectToAction("details", "branch", new { id = roomOrder.Room.BranchId });
+        //}
     }
 }

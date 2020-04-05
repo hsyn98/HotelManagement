@@ -1,11 +1,103 @@
-﻿@model RoomBookViewModel
+﻿@model RoomBookViewModel;
 
 @{ 
     ViewBag.Title = "Room Ordering Page";
 }
 
 <h3>@ViewData["Title"]</h3>
+<h3>@Model.SelectedBranchId</h3>
 
-<form>
 
+<a class="navbar-brand h5 mb-3" asp-area="" asp-controller="User" asp-action="Create">+ Create New User</a> or select from existing ones
+
+<form asp-action="book" asp-controller="room" method="get">
+    <div class="row input-group">
+        <input type="text" name="search" id="search" class="form-control" />
+        <div class="input-group-btn">
+            <input type="submit" value="search" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.ExistUsers)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Surname</td>
+                <td>@user.Email</td>
+                <td>@user.Gender</td>
+                <td>@user.Status</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="order" asp-controller="book" asp-route-id="@user.Id">Select</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr>
+<form enctype="multipart/form-data" asp-controller="room" asp-action="Book" method="post" class="mt-3">
+    <input hidden asp-for="SelectedBranchId" />
+    <input hidden asp-for="SelectedRoomId" />
+    <input hidden asp-for="RoomStar" />
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control" placeholder="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Surname" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Surname" class="form-control" placeholder="Surname">
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Gender" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Gender" type="radio" name="Gender" value="Male" /> Male
+            <input asp-for="Gender" type="radio" name="Gender" value="Female" /> Female
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="StartDate" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input type="date" asp-for="StartDate" class="form-control">
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="FinishDate" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input type="date" asp-for="FinishDate" class="form-control">
+            <span asp-validation-for="FinishDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row mt-4">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
 </form>

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.ViewModels
 {
-    public class UserCreateViewModel
+    public class UserCreateViewModel : RoomEditViewModel
     {
         [Required(ErrorMessage = "Please Enter Name")]
-        public string Name { get; set; }
+        public new string Name { get; set; }
 
         [Required(ErrorMessage = "Please Enter Surname")]
         public string Surname { get; set; }

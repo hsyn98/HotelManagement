@@ -17,6 +17,7 @@ namespace HotelManagement.Models
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Services> Services { get; set; }
         new public DbSet<User> Users { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

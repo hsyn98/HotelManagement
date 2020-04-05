@@ -11,6 +11,8 @@ namespace HotelManagement.Models
         User Update(User userChanges);
         User Delete(int id);
         User GetUser(int id);
+        int AddedUserId();
+        List<User> Search(string search);
         IEnumerable<User> GetAllUsers();
     }
 }

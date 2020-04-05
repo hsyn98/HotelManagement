@@ -21,6 +21,11 @@ namespace HotelManagement.Models
             return user;
         }
 
+        public int AddedUserId()
+        {
+            return context.Users.Max(item => item.Id);
+        }
+
         public User Delete(int id)
         {
             User user = context.Users.Find(id);
@@ -40,6 +45,13 @@ namespace HotelManagement.Models
         public User GetUser(int id)
         {
             return context.Users.Find(id);
+        }
+
+        public List<User> Search(string search)
+        {
+            return context.Users.Where(u => u.Name.Contains(search) ||
+                                            u.Surname.Contains(search) ||
+                                            u.Email.Contains(search)).ToList();
         }
 
         public User Update(User userChanges)
