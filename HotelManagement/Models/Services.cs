@@ -8,6 +8,7 @@ namespace HotelManagement.Models
 {
     public class Services
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public ServicesGroups ServiceGroup { get; set; }

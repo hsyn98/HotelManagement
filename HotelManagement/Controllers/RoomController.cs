@@ -111,7 +111,6 @@ namespace HotelManagement.Controllers
 
             Book newBook = new Book
             {
-                BranchId = roomOrder.SelectedBranchId,
                 RoomId = roomOrder.SelectedRoomId,
                 UserId = lastUserId,
                 StartDate = roomOrder.StartDate,

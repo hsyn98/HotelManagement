@@ -8,6 +8,7 @@ namespace HotelManagement.Models
 {
     public class Branch
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -26,5 +27,7 @@ namespace HotelManagement.Models
         public BranchStatus BranchStatus { get; set; }
 
         public string PhotoPath { get; set; }
+
+        public ICollection<Room> Room { get; set; }
     }
 }

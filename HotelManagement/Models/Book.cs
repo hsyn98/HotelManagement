@@ -12,10 +12,6 @@ namespace HotelManagement.Models
         [Key]
         public int Id { get; set; }
 
-        public int BranchId { get; set; }
-        [ForeignKey("BranchId")]
-        public Branch Branch { get; set; }
-
         public int RoomId { get; set; }
         [ForeignKey("RoomId")]
         public Room Room { get; set; }

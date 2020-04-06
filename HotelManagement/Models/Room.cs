@@ -9,6 +9,7 @@ namespace HotelManagement.Models
 {
     public class Room
     {
+        [Key]
         public int Id { get; set; }
 
         public int BranchId { get; set; }
@@ -27,5 +28,7 @@ namespace HotelManagement.Models
 
         [Required]
         public int Star { get; set; }
+
+        public ICollection<Book> Book { get; set; }
     }
 }

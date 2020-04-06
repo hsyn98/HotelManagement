@@ -22,6 +22,14 @@ namespace HotelManagement.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Branch>()
+                .HasMany(b => b.Room)
+                .WithOne(r => r.Branch);
+
+            modelBuilder.Entity<Room>()
+                .HasMany(r => r.Book)
+                .WithOne(b => b.Room);
         }
     }
 }
